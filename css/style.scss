@@ -1,0 +1,54 @@
+/* - - - - - - - - - - - - - - - - - - - - -
+
+Título          : Website Title
+Autor           : 
+Site            : www.site.com
+
+- - - - - - - - - - - - - - - - - - - - - */
+
+/*************** RESET Y GLOBALES ***************/
+
+@import "css/reset.css";
+@import "css/mood2.0.scss";
+
+$fontpath:'../font/';
+@include fontface($fontpath,'helveticalt-webfont','helveticalight');
+
+@mixin helvetica { font-family: 'helveticalight'; }
+
+body {
+	font-size: 12px;
+	font-family: 'helveticalight', "Trebuchet MS";
+	background: #ffffff;
+}
+
+@include selecolor($amarillo, $azul);
+@include inputdefault('Verdana', 12px);
+
+
+/****************** LAYOUT ******************/
+
+/****************** INDEX ******************/
+
+/****************** MEDIA QUERIES ******************/
+
+@media screen and (max-width: 900px) {
+}
+
+@media screen and (max-width: 760px) {
+	
+}
+// iphone landscape
+@media screen and (max-width: 480px) {
+	html { -webkit-text-size-adjust: 100%; }	
+}
+// iphone portrait
+@media only screen and (min-width: 320px) {
+		
+}
+
+
+
+
+
+

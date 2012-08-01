@@ -1,0 +1,146 @@
+/*
+
+MOOD Framework - 2012-07-31
+
+Made by @lickybuay
+
+m = Margin / p = Padding / s = Size
+ml = Margin Left   /   mr = Margin Right
+mt = Margin Top   /    mb = Margin Bottom
+pl = Padding Left   /   pr = Padding Right
+pt = Padding Top   /    pb = Padding Bottom
+*/
+
+//MIXIN
+
+@mixin selecolor($bgcolor, $color) {
+	::-moz-selection { background: $bgcolor; color: $color; text-shadow: none; }
+	::selection { background: $bgcolor; color: $color; text-shadow: none; }
+}
+
+@mixin fontface($path, $name, $alias) {
+	//How tu use: @include fontface('../','helvetica_light-normal-webfont','helveticalight'); 
+	@font-face {
+	    font-family: $alias;
+	    src: url($path+$name+'.eot');
+	    src: url($path+$name+'.eot?#iefix') format('embedded-opentype'),
+	         url($path+$name+'.woff') format('woff'),
+	         url($path+$name+'.ttf') format('truetype'),
+	         url($path+$name+'.svg#'+$alias) format('svg');
+	    font-weight: normal;
+	    font-style: normal;
+	}
+}
+
+@mixin redondeado ($leftop, $rightop, $leftdown, $rightdown) {
+	//How tu use: @include redondeado(lefttop, rightop, leftdown, rightdown);	
+	-webkit-border-radius: $leftop+px $rightop+px $leftdown+px $rightdown+px;
+    -moz-border-radius: $leftop+px $rightop+px $leftdown+px $rightdown+px;
+    border-radius: $leftop+px $rightop+px $leftdown+px $rightdown+px;
+}
+
+@mixin gradient ($inicio, $fin) {
+	//How tu use: @include gradient(#topcolor, #endcolor);
+	background: $inicio;
+	//filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$inicio, endColorstr=$fin);
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from($inicio), to($fin));
+	background: -webkit-linear-gradient($inicio, $fin);
+	background: -moz-linear-gradient($inicio, $fin);
+	background: -ms-linear-gradient($inicio, $fin);
+	background: -o-linear-gradient($inicio, $fin);
+	background: linear-gradient($inicio, $fin);
+	-pie-background: linear-gradient($inicio, $fin);
+}
+
+@mixin easing($seg) {
+	//How tu use: @include easing(2s);
+	-webkit-transition: all $seg ease-in-out 0s;  
+	-moz-transition: all 1s ease-in-out 0s;  
+	-o-transition: all 1s ease-in-out 0s;  
+	transition: all 1s ease-in-out 0s;
+}
+
+@mixin inputdefault($font, $fontsize) {
+	//How tu use: @include inputdefault('Arial', 12px);
+	input, textarea, buttom, select { font-family: $font; font-size: $fontsize; }
+}
+
+@mixin piecss() { 
+	//How tu use: @include piecss();
+	behavior: url(PIE.php); 
+}
+
+//MIXIN
+
+body { overflow-y: scroll; }
+.left  { float: left; }
+.right { float: right; }
+.positionrelative { position: relative; }
+a:hover, input[type="button"]:hover, input[type="submit"]:hover { cursor: pointer; }
+.displaynone { display: none;}
+
+.alignleft { text-align: left; }
+.alignright { text-align: right; }
+.alignjustify { text-align: justify; }
+.aligncenter { text-align: center; }
+
+a { text-decoration: none; }
+.divcentrado { margin-left: auto; margin-right: auto; }
+.clear { 
+  	//Clearing floats like a boss: goo.gl/zm1oD
+	zoom: 1;
+  	&:before, &:after { display: table; content: ""; }
+  	&:after { clear: both; }
+}
+.displayblock{ display:block; }
+
+/*MARGIN / PADDING 0*/
+.m0 { margin: 0; } .p0 { padding: 0; }
+
+/*TAMAÑOS - S960*/
+@for $i from 1 through 48 { .s#{($i*20)} { width: ($i*20)+px; } }
+
+/*LINE HEIGHT*/
+.lh18 { line-height: 18px; }
+.lh24 { line-height: 24px; }
+.lh36 { line-height: 36px; }
+
+/*MARGIN*/
+.margin5  { margin: 5px; }
+.margin10 { margin: 10px; }
+.margin15 { margin: 15px; }
+.margin20 { margin: 20px; }
+
+/*MARGINS*/
+@for $i from 1 through 20 { 
+	.mt#{($i*10)} { margin-top: ($i*10)+px; }
+	.mr#{($i*10)} { margin-right: ($i*10)+px; }
+	.mb#{($i*10)} { margin-bottom: ($i*10)+px; } 
+	.ml#{($i*10)} { margin-left: ($i*10)+px; }
+}
+
+/*PADDING*/
+.padding5 { padding: 5px; }
+.padding10 { padding: 10px; }
+.padding15 { padding: 15px; }
+.padding20 { padding: 20px; }
+
+.pl5 { padding-left: 5px; }
+.pl10 { padding-left: 10px; }
+.pl15 { padding-left: 15px; }
+.pl20 { padding-left: 20px; }
+
+.pr5 { padding-right: 5px; }
+.pr10 { padding-right: 10px; }
+.pr15 { padding-right: 15px; }
+.pr20 { padding-right: 20px; }
+
+.pt5 { padding-top: 5px; }
+.pt10 { padding-top: 10px; }
+.pt15 { padding-top: 15px; }
+.pt20 { padding-top: 20px; }
+
+.pb5 { padding-bottom: 5px; }
+.pb10 { padding-bottom: 10px; }
+.pb15 { padding-bottom: 15px; }
+.pb20 { padding-bottom: 20px; }
