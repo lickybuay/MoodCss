@@ -1,11 +1,16 @@
 /*
-MOOD Framework :: 2.0 - Made by @lickybuay
+
+MOOD Framework :: 2.1 - Made by @lickybuay
+
+2013-09-14
+
 m = Margin / p = Padding / s = Size
 ml = Margin Left   /   mr = Margin Right
 mt = Margin Top   /    mb = Margin Bottom
 pl = Padding Left   /   pr = Padding Right
 pt = Padding Top   /    pb = Padding Bottom
 dn = Display None
+
 */
 
 //MIXIN
@@ -85,7 +90,7 @@ a { text-decoration: none; }
 .left  { float: left; }
 .right { float: right; }
 .positionrelative { position: relative; }
-a:hover, input[type="button"]:hover, input[type="submit"]:hover { cursor: pointer; }
+a:hover, label, input[type="button"]:hover, input[type="submit"]:hover { cursor: pointer; }
 .dn { display: none; }
 
 .alignleft { text-align: left!important; }
