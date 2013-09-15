@@ -1,14 +1,11 @@
 /*
-
-MOOD Framework - 2012-07-31
-
-Made by @lickybuay
-
+MOOD Framework :: 2.0 - Made by @lickybuay
 m = Margin / p = Padding / s = Size
 ml = Margin Left   /   mr = Margin Right
 mt = Margin Top   /    mb = Margin Bottom
 pl = Padding Left   /   pr = Padding Right
 pt = Padding Top   /    pb = Padding Bottom
+dn = Display None
 */
 
 //MIXIN
@@ -52,12 +49,18 @@ pt = Padding Top   /    pb = Padding Bottom
 	-pie-background: linear-gradient($inicio, $fin);
 }
 
-@mixin easing($seg) {
-	//How tu use: @include easing(2s);
-	-webkit-transition: all $seg ease-in-out 0s;  
-	-moz-transition: all 1s ease-in-out 0s;  
-	-o-transition: all 1s ease-in-out 0s;  
-	transition: all 1s ease-in-out 0s;
+@mixin easing($seg, $trans:"all", $motion:"ease-in-out") {
+	//How tu use: @include easing(2s, "width", "linear");
+	-webkit-transition: $trans $seg ease-in-out 0s;  
+	-moz-transition: $trans $seg ease-in-out 0s;  
+	-o-transition: $trans $seg ease-in-out 0s;  
+	transition: $trans $seg ease-in-out 0s;
+
+	//Previene el parpadeo en varios navegadores
+	-webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
 }
 
 @mixin inputdefault($font, $fontsize) {
@@ -70,19 +73,27 @@ pt = Padding Top   /    pb = Padding Bottom
 	behavior: url(PIE.php); 
 }
 
-//MIXIN
+@mixin borderbox(){
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
 
-body { overflow-y: scroll; }
+h1, h2, h3, ul, p { padding: 0; margin: 0; font-weight: normal; }
+a { text-decoration: none; }
+//MIXIN
 .left  { float: left; }
 .right { float: right; }
 .positionrelative { position: relative; }
 a:hover, input[type="button"]:hover, input[type="submit"]:hover { cursor: pointer; }
-.displaynone { display: none;}
+.dn { display: none; }
 
-.alignleft { text-align: left; }
+.alignleft { text-align: left!important; }
 .alignright { text-align: right; }
 .alignjustify { text-align: justify; }
 .aligncenter { text-align: center; }
+
+figure img { display:block; } //Arregla Espacio 4px down
 
 a { text-decoration: none; }
 .divcentrado { margin-left: auto; margin-right: auto; }
